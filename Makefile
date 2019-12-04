@@ -48,9 +48,6 @@ upgrade: upgrade-piptools piptools ## upgrade requirement pins.
 	# Generate pins for pip-tools itself.
 	pip-compile requirements/pip-tools.in --rebuild --upgrade -o requirements/pip-tools.txt
 
-upgrade: ## upgrade test requirement pins
-	CUSTOM_COMPILE_COMMAND="make upgrade" make _upgrade
-
 requirements: piptools ## install dev requirements into current env
 	pip-sync requirements/dev.txt
 

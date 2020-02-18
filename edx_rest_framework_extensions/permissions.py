@@ -86,6 +86,10 @@ class JwtHasScope(BasePermission):
         return allowed
 
 
+# TODO: Copy and rename this one.
+#  view.kwargs.get('course_id') => 'provider_id'
+# tpa_provider
+# Question: How does this work for endpoints without a course, and are we getting lots of pointless warnings???
 class JwtHasContentOrgFilterForRequestedCourse(BasePermission):
     """
     The JWT used to authenticate contains the appropriate content provider
@@ -166,6 +170,7 @@ _JWT_RESTRICTED_PERMISSIONS = (
     C(JwtRestrictedApplication) &
     JwtHasScope &
     JwtHasContentOrgFilterForRequestedCourse &
+    JwtHasTpaProviderFilterForRequestedProvider &
     JwtHasUserFilterForRequestedUser
 )
 JWT_RESTRICTED_APPLICATION_OR_USER_ACCESS = (
